@@ -50,8 +50,7 @@ def get_song_schema():
 def process_song_data(spark, input_data, output_data):
     
     # get filepath to song data file
-    # song_data = input_data + "song_data/*/*/*/*.json"
-    song_data = input_data
+    song_data = input_data + "song_data/*/*/*/*.json"
 
     # read song data file
     song_df = spark.read.json(song_data,schema=get_song_schema())
@@ -69,7 +68,7 @@ def process_song_data(spark, input_data, output_data):
                         "duration").dropDuplicates(["song_id"]) 
     
     # write songs table to parquet files partitioned by year and artist
-    songs_table.write.parquet(output_data + "songs_table.parquet",
+    songs_table.write.parquet(output_data + 'songs/' +  "songs_table.parquet",
                           partitionBy = ["year", "artist_id"],
                           mode = "overwrite") 
 
@@ -81,13 +80,13 @@ def process_song_data(spark, input_data, output_data):
                           "artist_longitude").dropDuplicates(["artist_id"])
     
     # write artists table to parquet files
-    artists_table.write.parquet(output_data + "artists_table.parquet", mode = "overwrite")
+    artists_table.write.parquet(output_data + 'artists/' + "artists_table.parquet", 
+                                mode = "overwrite")
 
 
 def process_log_data(spark, input_data, output_data):
     # get filepath to log data file
-    #log_data = input_data + "log-data/*/*/*.json"
-    log_data = input_data
+    log_data = input_data + "log-data/*/*/*.json"
     
     log_schema = R([
         Fld("artist", Str()),
@@ -129,7 +128,7 @@ def process_log_data(spark, input_data, output_data):
                             "level").dropDuplicates(["user_id"]) 
     
     # write users table to parquet files
-    users_table.write.parquet("output_data/" + "users_table.parquet",mode = "overwrite")
+    users_table.write.parquet(output_data + 'users/' + "users_table.parquet",mode = "overwrite")
 
     # create timestamp column from original timestamp column
     #log_df = log_df.withColumn('timestamp',( (log_df.ts.cast('float')/1000).cast("timestamp")) )
@@ -147,8 +146,8 @@ def process_log_data(spark, input_data, output_data):
                            ).dropDuplicates(["start_time"])
     
     # write time table to parquet files partitioned by year and month
-    time_table.write.parquet("output_data/"  + "time_table.parquet",
-                         partitionBy = ["year", "month", "week"],
+    time_table.write.parquet(output_data + 'timetable/' + "time_table.parquet",
+                         partitionBy = ["year", "month"],
                          mode = "overwrite")
 
     # read in song data to use for songplays table
@@ -166,20 +165,16 @@ def process_log_data(spark, input_data, output_data):
                     .withColumnRenamed("userAgent", "user_agent")   
 
     # write songplays table to parquet files partitioned by year and month
-    songplays_table.write.parquet("output_data/" + "songplays_table.parquet",
+    songplays_table.write.parquet(output_data + 'songplays/' + "songplays_table.parquet",
                               partitionBy=["year", "month"],
                               mode="overwrite")
 
 
 def main():
     spark = create_spark_session()
-    # input_data = "s3://udacity-dend/song_data"
-    output_data = "output_data/"
-    
-    input_data = "song-data/song_data/*/*/*/"
+    input_data = "s3://udacity-dend/song_data"
+    output_data = "s3://m489887-udacity-sparkify-data-lake-project/output/" 
     process_song_data(spark, input_data, output_data)    
-    
-    input_data = "log-data/"
     process_log_data(spark, input_data, output_data)
 
 
