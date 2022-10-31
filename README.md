@@ -5,9 +5,9 @@
 <p>sparkify, a music streaming startup is growing and need to move their warehouse to datatlake hosted in S3.Analytics team would make good use of these data in order to idetify trends and bring meaningful business ideas to increase userbase further and enhanace user experience.</p>
 
 <p>Intent of this project is to to create a ETL pipleline for a data lake hosted in S3 by using the concepts learned in this course on spark and basic AWS S3. Below stpes needs to be performed:</p>
-**1. Load data from S3 ( Refer to: Project Datasets)
-**2: process the data into analytics tables using Spark
-**3: load them back into S3 (Refer to Schema for Song Play Analysis)
+**1. Load data from S3 ( Refer to: Project Datasets) <br>
+**2: process the data into analytics tables using Spark <br>
+**3: load them back into S3 (Refer to Schema for Song Play Analysis) <br>
 
 
 ## Project Datasets
