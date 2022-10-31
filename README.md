@@ -54,13 +54,6 @@ This includes the following tables.
 > time - timestamps of records in songplays broken down into specific units
 > Columns - start_time, hour, day, week, month, year, weekday
 
-## <br>Data Lake to store extracted dimentional tables
->"s3://m489887-udacity-sparkify-data-lake-project/output/artists" <br>
->"s3://m489887-udacity-sparkify-data-lake-project/output/songs" <br>
->"s3://m489887-udacity-sparkify-data-lake-project/output/time" <br>
->"s3://m489887-udacity-sparkify-data-lake-project/output/users" <br>
->"s3://m489887-udacity-sparkify-data-lake-project/output/songplays"<br>
-
 
 ## <br>Project Files and configuration
 
