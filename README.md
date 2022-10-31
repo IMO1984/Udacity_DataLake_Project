@@ -63,9 +63,9 @@ This includes the following tables.
 **4. Need spark(Localy) or can be executed directly on AWS EMR. Please be mindful about the required imports.**
 
 References:
-**1. https://github.com/xingyazhou/udacity-data-lakes-with-spark/
-**2. https://towardsdatascience.com/some-issues-when-building-an-aws-data-lake-using-spark-and-how-to-deal-with-these-issues-529ce246ba59
-**3: https://aws.amazon.com/premiumsupport/knowledge-center/
+1. https://github.com/xingyazhou/udacity-data-lakes-with-spark/ <br>
+2. https://towardsdatascience.com/some-issues-when-building-an-aws-data-lake-using-spark-and-how-to-deal-with-these-issues-529ce246ba59 <br>
+3: https://aws.amazon.com/premiumsupport/knowledge-center/ <br>
 
     
 
