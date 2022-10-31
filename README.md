@@ -60,7 +60,7 @@ This includes the following tables.
 **1. dl.cfg**                    Contains the Secret Key for ASW access<br>
 **2. etl.py**                    Loading song data and log data from S3 to Spark, transforms data into a set of dimensional tables, then save the table back to S3 <br>
 **3. README.md**                 Provides project info<br>
-**4. Need spark(Localy) or can be executed directly on AWS EMR. Please be mindful about the required imports.
+**4. Need spark(Localy) or can be executed directly on AWS EMR. Please be mindful about the required imports.**
 
 References:
 **1. https://github.com/xingyazhou/udacity-data-lakes-with-spark/
